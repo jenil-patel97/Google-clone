@@ -1,7 +1,7 @@
 import React from "react";
 import { TbGridDots } from "react-icons/tb";
 import { VscAccount } from "react-icons/vsc";
-import Search from "./Search";
+import Search from "../components/Search";
 
 const Home = () => {
   return (
