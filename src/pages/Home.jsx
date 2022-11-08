@@ -6,16 +6,16 @@ import Search from "./Search";
 const Home = () => {
   return (
     <div className="flex flex-col h-screen">
-      <div className="flex justify-between py-[20px] px-[30px] items-center">
-        <div className="flex space-x-6">
-          <p>About</p>
-          <p>Store</p>
+      <div className="flex justify-between px-[30px] items-center">
+        <div className="flex space-x-6 mt-4">
+          <p className="cursor-pointer hover:underline">About</p>
+          <p className="cursor-pointer hover:underline">Store</p>
         </div>
-        <div className="flex">
-          <p className="mr-6">Gmail</p>
-          <p>Images</p>
-          <TbGridDots className="ml-5" size={20} />
-          <VscAccount className="ml-5 -mt-1" size={30} />
+        <div className="flex mt-5">
+          <p className="mr-6 cursor-pointer hover:underline">Gmail</p>
+          <p className="cursor-pointer hover:underline">Images</p>
+          <TbGridDots className="ml-5 cursor-pointer" size={20} />
+          <VscAccount className="ml-5 -mt-1 cursor-pointer" size={30} />
         </div>
       </div>
 
