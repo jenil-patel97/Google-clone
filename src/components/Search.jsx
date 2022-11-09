@@ -7,6 +7,7 @@ import { actionTypes } from "../components/Reducer";
 import { useNavigate } from "react-router-dom";
 
 const Search = ({ hideBtn }) => {
+  // eslint-disable-next-line no-empty-pattern
   const [{}, dispatch] = useStateValue();
   const [input, setInput] = useState("");
   const navigate = useNavigate();

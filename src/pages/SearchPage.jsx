@@ -33,7 +33,7 @@ const SearchPage = () => {
         <div>
           <Search hideBtn />
 
-          <div className="flex items-center text-gray-500 mt-[25px] space-x-7">
+          <div className="flex items-center text-gray-500 -mt-[10px] -mb-4 space-x-7">
             <div className="flex items-center">
               <img src={Logo} alt="logo" className="w-5" />
               <Link to="/all" className="text-gray-600 ml-2">
@@ -86,8 +86,8 @@ const SearchPage = () => {
       </form>
       {/* Searchresults */}
       {term && (
-        <div className="mt-8 max-w-[1240px] px-[180px]">
-          <p className="text-gray-500 text-[14px]">
+        <div className="mt-4 max-w-[1240px] px-[180px]">
+          <p className="text-gray-500 text-[15px]">
             About {data?.searchInformation.formattedTotalResults} results (
             {data?.searchInformation.formattedSearchTime} seconds)
           </p>
