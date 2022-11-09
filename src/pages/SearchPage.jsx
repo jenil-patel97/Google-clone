@@ -12,14 +12,16 @@ import {
 } from "react-icons/ai";
 import { FiMoreVertical } from "react-icons/fi";
 import { useStateValue } from "../store/StateProvider";
+import GoogleSearch from "../components/GoogleSearch";
 
 const SearchPage = () => {
   const [{ term }] = useStateValue();
+  const { data } = GoogleSearch(term);
   console.log(term);
 
   return (
     <div>
-      <form className="flex sticky top-0 z-[100] items-start p-7 border-b border-gray-300 -mt-5">
+      <form className="flex top-0 z-[100] items-start p-7 border-b border-gray-300 -mt-5">
         <Link to="/">
           <img
             className="h-[30px] mr-12 w-[92px] mt-8"
@@ -82,31 +84,27 @@ const SearchPage = () => {
           <VscAccount size={26} />
         </div>
       </form>
-
       {/* Searchresults */}
-      <div className="mt-8 max-w-[1240px] px-[180px]">
-        <div className="text-gray-500 text-[14px]">
-          <p>About 84,40,000 results (0.34 seconds)</p>
-        </div>
+      {term && (
+        <div className="mt-8 max-w-[1240px] px-[180px]">
+          <p className="text-gray-500 text-[14px]">
+            About {data?.searchInformation.formattedTotalResults} results (
+            {data?.searchInformation.formattedSearchTime} seconds)
+          </p>
 
-        <div className="mt-4">
-          <a href="#/">reactrouter.com</a>
-          <a href="#/">
-            <h2 className="hover:underline text-[#681da8] text-[20px] font-medium">
-              Quick Start - React Router: Declarative Routing for React.js
-            </h2>
-          </a>
+          {data?.items.map((item) => (
+            <div className="mt-4">
+              <a href={item.link}>{item.link}</a>
+              <a href={item.link}>
+                <h2 className="hover:underline text-[#681da8] text-[20px] font-medium">
+                  {item.title}
+                </h2>
+              </a>
+              <p className="mt-1">{item.snippet}</p>
+            </div>
+          ))}
         </div>
-
-        <p className="mt-1">
-          You can install React Router from the public npm registry with either
-          npm or yarn . Since we're building a web app, we'll use
-          react-router-dom in this guide.
-        </p>
-        <p className="text-gray-500">
-          You've visited this page many times. Last visit: 8/11/22
-        </p>
-      </div>
+      )}
     </div>
   );
 };
