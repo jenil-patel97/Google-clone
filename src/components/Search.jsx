@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Mic from "../assets/google-voice.png";
 import Lens from "../assets/Google-Lens.png";
+import { useStateValue } from "../store/StateProvider";
+import { actionTypes } from "../components/Reducer";
+import { useNavigate } from "react-router-dom";
 
 const Search = ({ hideBtn }) => {
+  const [{}, dispatch] = useStateValue();
   const [input, setInput] = useState("");
-
+  const navigate = useNavigate();
   const search = (e) => {
     e.preventDefault();
-    alert(input);
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      term: input,
+    });
+    navigate("/search");
   };
   return (
     <div>
@@ -23,7 +31,7 @@ const Search = ({ hideBtn }) => {
         <img src={Lens} alt="lens" width={20} className="ml-5" />
       </div>
 
-      {!hideBtn && (
+      {!hideBtn ? (
         <div className="flex justify-center mt-[32px] space-x-6">
           <button
             onClick={search}
@@ -34,6 +42,16 @@ const Search = ({ hideBtn }) => {
           </button>
           <button className="space-x-8 px-4 py-2 rounded-md bg-[#f5f1f1] border border-white hover:border-slate-300">
             I'm feeling lucky
+          </button>
+        </div>
+      ) : (
+        <div className="flex justify-center mt-[32px] space-x-6">
+          <button
+            onClick={search}
+            className="hidden space-x-8 px-4 py-2 rounded-md bg-[#f5f1f1] border border-white hover:border-slate-300"
+            type={"submit"}
+          >
+            Google Search
           </button>
         </div>
       )}

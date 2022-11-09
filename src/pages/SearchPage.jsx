@@ -11,11 +11,15 @@ import {
   AiOutlineSetting,
 } from "react-icons/ai";
 import { FiMoreVertical } from "react-icons/fi";
+import { useStateValue } from "../store/StateProvider";
 
 const SearchPage = () => {
+  const [{ term }] = useStateValue();
+  console.log(term);
+
   return (
     <div>
-      <div className="flex sticky top-0 z-[100] items-start p-7 border-b border-gray-300 -mt-5">
+      <form className="flex sticky top-0 z-[100] items-start p-7 border-b border-gray-300 -mt-5">
         <Link to="/">
           <img
             className="h-[30px] mr-12 w-[92px] mt-8"
@@ -77,7 +81,7 @@ const SearchPage = () => {
           <TbGridDots size={23} />
           <VscAccount size={26} />
         </div>
-      </div>
+      </form>
 
       {/* Searchresults */}
       <div className="mt-8 max-w-[1240px] px-[180px]">
